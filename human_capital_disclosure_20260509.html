@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人的資本開示 義務拡充レポート 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1a3a5c;
+    --navy-light: #2a5080;
+    --accent: #c8a84b;
+    --gray-bg: #f4f6f8;
+    --gray-border: #dde2e8;
+    --text: #1e2d3d;
+    --text-light: #5a6a7a;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.8;
+    font-size: 14px;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+  }
+
+  /* ── ヘッダー ── */
+  .header {
+    background: var(--navy);
+    color: #fff;
+    padding: 48px 56px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(200,168,75,0.15);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: 60px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .header h2 {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 16px;
+  }
+
+  /* ── コンテンツ共通 ── */
+  .content {
+    padding: 48px 56px;
+  }
+
+  /* ── Executive Summary ── */
+  .exec-summary {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    position: relative;
+    border-left: 4px solid var(--accent);
+  }
+  .exec-summary-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .exec-summary p {
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.88);
+  }
+  .exec-summary .highlight {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ── セクション見出し ── */
+  .section {
+    margin-bottom: 52px;
+  }
+  .section-number {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--navy);
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .section-lead {
+    font-size: 13.5px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    line-height: 1.9;
+  }
+
+  /* ── 改正3項目リスト ── */
+  .obligation-list {
+    background: var(--gray-bg);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .obligation-list-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+  .obligation-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    font-size: 13.5px;
+  }
+  .obligation-item:last-child { margin-bottom: 0; }
+  .obligation-num {
+    background: var(--navy);
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── 注釈ボックス ── */
+  .note-box {
+    background: #fff8e6;
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 12.5px;
+    color: #6b5a1e;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ── 企業事例カード ── */
+  .case-card {
+    background: var(--gray-bg);
+    border-radius: 10px;
+    border: 1px solid var(--gray-border);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--navy);
+  }
+  .case-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--navy-light);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .case-company {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .case-headline {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--gray-border);
+  }
+  .case-body {
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+  .case-insight {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  .case-insight-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  /* ── データハイライト ── */
+  .data-row {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+  }
+  .data-chip {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .data-chip span {
+    color: var(--accent);
+    font-size: 15px;
+  }
+
+  /* ── チェックリスト ── */
+  .checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .checklist li {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-border);
+    font-size: 13.5px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num {
+    background: var(--navy);
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .check-content strong {
+    display: block;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .check-content small {
+    color: var(--text-light);
+    font-size: 12px;
+  }
+
+  /* ── 示唆セクション ── */
+  .implication-box {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 32px 36px;
+    margin-bottom: 20px;
+  }
+  .implication-title {
+    font-size: 17px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .implication-body {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+  .implication-items {
+    list-style: none;
+    padding: 0;
+  }
+  .implication-items li {
+    padding: 8px 0 8px 20px;
+    position: relative;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .implication-items li:last-child { border-bottom: none; }
+  .implication-items li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 9px;
+    top: 11px;
+  }
+
+  /* ── フッター ── */
+  .footer {
+    background: var(--gray-bg);
+    padding: 28px 56px;
+    border-top: 1px solid var(--gray-border);
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+  .footer strong {
+    display: block;
+    font-size: 12px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .footer .sources {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--gray-border);
+  }
+
+  /* ── 印刷・PDF対応 ── */
+  @media print {
+    body { font-size: 12px; }
+    .header { padding: 36px 40px 28px; }
+    .content { padding: 32px 40px; }
+    .footer { padding: 20px 40px; }
+    .case-card, .exec-summary, .implication-box { break-inside: avoid; }
+    @page { margin: 0; size: A4; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <div class="header-label">HR Insights Report</div>
+    <h1>人的資本開示 義務拡充レポート</h1>
+    <h2>2026年3月期から何が変わるか──日系大手3社の先進事例と実務対応ポイント</h2>
+    <div class="header-meta">
+      <span>発行：2026年5月9日</span>
+      <span>対象：人事担当者・CHRO・経営者</span>
+    </div>
+  </div>
+
+  <!-- コンテンツ -->
+  <div class="content">
+
+    <!-- Executive Summary -->
+    <div class="exec-summary">
+      <div class="exec-summary-label">Executive Summary</div>
+      <p>
+        2026年3月期の有価証券報告書から、人的資本開示の義務が大幅に拡充されました。新たに
+        <span class="highlight">「経営戦略と連動した人材戦略」「従業員給与の決定方針」「平均年間給与の前年比増減率」</span>
+        の3項目が必須開示となりました。<br>
+        経営戦略と人材戦略を一貫して語れない企業は、<span class="highlight">投資家・求職者の双方から評価を下げるリスク</span>があります。
+        本レポートでは改正の全体像と、金融庁が好事例として選定した日系大手3社の取り組みを解説します。
+      </p>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section">
+      <div class="section-number">Section 01</div>
+      <div class="section-title">2026年改正の全体像<br>「給与と戦略の一貫説明」が義務化</div>
+      <p class="section-lead">
+        2026年2月20日、内閣府令等の改正により、2026年3月期有価証券報告書から人的資本開示の内容が拡充されました。
+        経済産業省・内閣官房・金融庁が共同で「人的資本可視化指針（改訂版）」を公表し、開示の質的向上を求めています。
+      </p>
+
+      <div class="obligation-list">
+        <div class="obligation-list-title">今回の改正で新たに義務化された3項目</div>
+        <div class="obligation-item">
+          <div class="obligation-num">1</div>
+          <div>連結ベースの経営方針・経営戦略等と<strong>関連付けた人材戦略</strong></div>
+        </div>
+        <div class="obligation-item">
+          <div class="obligation-num">2</div>
+          <div>人材戦略を踏まえた<strong>従業員給与等の決定方針</strong></div>
+        </div>
+        <div class="obligation-item">
+          <div class="obligation-num">3</div>
+          <div><strong>平均年間給与の前年度比増減率</strong>の開示</div>
+        </div>
+      </div>
+
+      <p style="font-size:13.5px; margin-top:18px; line-height:1.9;">
+        さらに、<strong>2027年3月期以降</strong>はSSBJ（サステナビリティ基準委員会）基準によるプライム市場上場企業への段階的義務化が予定されており、開示の高度化は今後も続きます。
+      </p>
+
+      <div class="note-box">
+        📌 <strong>注目：</strong>2025年7月、人的資本に関する株価指数「JPX日経インデックス人的資本100」の算出・公表が開始。
+        開示の充実度が株価評価に直結する時代に入っています。
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section">
+      <div class="section-number">Section 02</div>
+      <div class="section-title">金融庁が選んだ好事例<br>日系大手3社の先進的取り組み</div>
+      <p class="section-lead">
+        2026年3月、金融庁は「記述情報の開示の好事例集2026」を公表し、12社を先進事例として選定しました。
+        共通するのは「<strong>経営戦略と人材戦略の因果関係を物語として語れているか</strong>」という視点です。
+      </p>
+
+      <!-- 事例1：丸井グループ -->
+      <div class="case-card">
+        <div class="case-label">Case Study 01 ／ 小売業</div>
+        <div class="case-company">丸井グループ</div>
+        <div class="case-headline">人的資本投資のROIを「IRR 12.7%」で定量開示</div>
+
+        <div class="data-row">
+          <div class="data-chip">人的資本投資 <span>320億円</span>（5年間）</div>
+          <div class="data-chip">IRR <span>12.7%</span>（有形資産10%を超過）</div>
+          <div class="data-chip">女性リーダー比率 <span>20%→39%</span></div>
+        </div>
+
+        <p class="case-body">
+          丸井グループは、店舗などの有形資産投資と並べて人的資本投資の内部収益率（IRR）を開示するという画期的な手法を採用。
+          2017年3月期から5年間の人的資本投資320億円に対し、IRR 12.7%を算出し、有形資産投資のIRR 10%を上回ることを示した。<br><br>
+          女性リーダー比率を2014年の20%から2025年には39%へ改善した軌跡、および社員エンゲージメント指標の
+          <strong>12年間での35ポイント改善（46%→81%）</strong>を時系列で可視化。「人への投資が経営成果につながる」という
+          因果関係を定量的に示したことが高評価を得た。
+        </p>
+
+        <div class="case-insight">
+          <div class="case-insight-label">示唆</div>
+          人的資本投資を「コスト」ではなく「投資対効果（ROI）」として語れるかが、投資家の評価を左右する。
+          独自の定量指標の設計が差別化の鍵となる。
+        </div>
+      </div>
+
+      <!-- 事例2：日立製作所 -->
+      <div class="case-card">
+        <div class="case-label">Case Study 02 ／ 製造業・インフラ</div>
+        <div class="case-company">日立製作所</div>
+        <div class="case-headline">経営計画「Inspire 2027」と人材戦略を完全連動</div>
+
+        <div class="data-row">
+          <div class="data-chip">人的資本投資 <span>77億→100億円</span>（2022→2026年度）</div>
+          <div class="data-chip">新卒採用 <span>ジョブ型</span>に完全移行</div>
+        </div>
+
+        <p class="case-body">
+          日立製作所は新経営計画「Inspire 2027」において、人的資本への積極投資を経営の中核に位置づけた。
+          人的資本投資を2022年3月期の77億円から2026年3月期には100億円まで拡大する計画を明示し、
+          投資額の推移と事業成長の連動性を開示。<br><br>
+          採用面でも2026年度から新卒採用における「<strong>ジョブ型採用への完全移行</strong>」を実施し、
+          文理の枠を超えた採用・博士人財の積極登用など、経営戦略を実現するための人材要件を具体的に定義。
+          「どんな人材を・なぜ・どう獲得するか」というストーリーが投資家に評価された。
+        </p>
+
+        <div class="case-insight">
+          <div class="case-insight-label">示唆</div>
+          採用戦略・育成方針が「中期経営計画と整合しているか」という文脈で語られているかが重要。
+          人事施策単体ではなく、事業戦略との因果関係の可視化が求められる。
+        </div>
+      </div>
+
+      <!-- 事例3：デンソー -->
+      <div class="case-card">
+        <div class="case-label">Case Study 03 ／ 自動車部品</div>
+        <div class="case-company">デンソー</div>
+        <div class="case-headline">「都合の悪い数字」を開示したことで信頼を獲得</div>
+
+        <p class="case-body">
+          デンソーは2023年3月期までの「法定要件を満たす最低限の開示」から大きく転換し、
+          <strong>達成できていない指標や課題の原因分析・改善策を正直に開示</strong>するスタイルへと移行。<br><br>
+          「見せたくない数字を隠さない」という姿勢が投資家の信頼を獲得し、金融庁の好事例に選定された。
+          人的資本開示において「都合の悪い情報を含むほど信頼性が上がる」という逆説が、
+          先進企業のスタンダードになりつつある。
+        </p>
+
+        <div class="case-insight">
+          <div class="case-insight-label">示唆</div>
+          完璧な数字より「課題を自覚し、対策を語れるか」が今後の評価軸になる。
+          誠実な開示が採用ブランドの強化にもつながる。
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3：チェックリスト -->
+    <div class="section">
+      <div class="section-number">Section 03</div>
+      <div class="section-title">実務対応チェックリスト<br>2026年3月期 開示前に確認すべき5項目</div>
+
+      <ul class="checklist">
+        <li>
+          <div class="check-num">1</div>
+          <div class="check-content">
+            <strong>経営戦略と人材戦略の「因果関係」が文書化されているか</strong>
+            <small>「事業戦略 → 必要な人材要件 → 採用・育成方針」のストーリーが一貫しているか確認する</small>
+          </div>
+        </li>
+        <li>
+          <div class="check-num">2</div>
+          <div class="check-content">
+            <strong>従業員給与の決定方針が明文化されているか</strong>
+            <small>業績評価・スキル・市場水準との連動ロジックが説明できるか確認する</small>
+          </div>
+        </li>
+        <li>
+          <div class="check-num">3</div>
+          <div class="check-content">
+            <strong>平均年間給与の前年比データが連結ベースで集計できているか</strong>
+            <small>グループ会社を含めたデータ収集体制が整っているか確認する</small>
+          </div>
+        </li>
+        <li>
+          <div class="check-num">4</div>
+          <div class="check-content">
+            <strong>業界横並びを超えた独自KPIが設定されているか</strong>
+            <small>自社の事業特性・戦略を反映した独自指標があるか確認する（丸井のIRR開示が参考例）</small>
+          </div>
+        </li>
+        <li>
+          <div class="check-num">5</div>
+          <div class="check-content">
+            <strong>「達成できていない指標」の原因と対策が語れるか</strong>
+            <small>デンソーの事例のように、誠実な開示が投資家・求職者の信頼につながる</small>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 4：示唆 -->
+    <div class="section">
+      <div class="section-number">Section 04</div>
+      <div class="section-title">人材紹介・採用支援事業者への示唆<br>「開示力」が採用競争力に直結する時代</div>
+
+      <div class="implication-box">
+        <div class="implication-title">
+          クライアント企業の人的資本開示の充実度が、<br>採用競争力に直結しています
+        </div>
+        <p class="implication-body">
+          求職者の情報収集手段として有価証券報告書・統合報告書を参照するハイクラス層が増加しており、
+          「人を大切にしている企業かどうか」を開示内容で判断する動きが広がっています。
+          採用支援・人材紹介事業者として、クライアント企業の人的資本開示の現状を把握し、
+          「開示の改善支援」という新たな付加価値を提供できる可能性があります。
+        </p>
+        <ul class="implication-items">
+          <li>自社の人的資本開示と競合他社の比較分析・ギャップ提示</li>
+          <li>ハイクラス求職者が開示情報を見る視点・重視ポイントの提供</li>
+          <li>採用ブランディングと人的資本開示の連動設計の提案</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- フッター -->
+  <div class="footer">
+    <strong>出典・参考資料</strong>
+    ・金融庁「記述情報の開示の好事例集2026」2026年3月27日公表<br>
+    ・経済産業省「人的資本可視化指針（改訂版）」2026年1月公表<br>
+    ・デロイト トーマツ「人的資本開示 2026 府令改正・指針改訂の解説」<br>
+    ・日立製作所「人的資本の充実に向けた2026年度採用計画について」2025年2月<br>
+    ・丸井グループ 統合報告書 / 日経ビジネス「丸井、店舗より人への投資が高効率」
+
+    <div class="sources">
+      ※ 本レポートに記載の法律・制度情報は2026年5月時点のものです。最新の法令をご確認ください。<br>
+      ※ 本レポートに記載の企業情報は公開情報に基づくものです。社外秘情報は含みません。
+    </div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
