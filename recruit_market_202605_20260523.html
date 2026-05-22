@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5月採用市場レポート 2026｜GW明け再加速とエンジニア求人1.2倍の実態</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1a3a5c;
+    --navy-light: #2a5080;
+    --accent: #c8a84b;
+    --gray-bg: #f4f6f8;
+    --gray-border: #dde2e8;
+    --text: #1e2d3d;
+    --text-light: #5a6a7a;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.8;
+    font-size: 14px;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+  }
+
+  /* ── ヘッダー ── */
+  .header {
+    background: var(--navy);
+    color: #fff;
+    padding: 48px 56px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(200,168,75,0.15);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: 60px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .header h2 {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 16px;
+  }
+
+  /* ── コンテンツ共通 ── */
+  .content {
+    padding: 48px 56px;
+  }
+
+  /* ── Executive Summary ── */
+  .exec-summary {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    position: relative;
+    border-left: 4px solid var(--accent);
+  }
+  .exec-summary-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .exec-summary p {
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.88);
+  }
+  .exec-summary .highlight {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ── セクション見出し ── */
+  .section {
+    margin-bottom: 52px;
+  }
+  .section-number {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--navy);
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .section-lead {
+    font-size: 13.5px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    line-height: 1.9;
+  }
+
+  /* ── データハイライト ── */
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0 28px;
+  }
+  .data-card {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 18px 16px;
+    text-align: center;
+    color: #fff;
+  }
+  .data-card .num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1.1;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .data-card .unit {
+    font-size: 13px;
+    color: var(--accent);
+  }
+  .data-card .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+    margin-top: 6px;
+  }
+
+  /* ── 注釈ボックス ── */
+  .note-box {
+    background: #fff8e6;
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 12.5px;
+    color: #6b5a1e;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ── 二極化チャート ── */
+  .polarization-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  .polarization-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .polarization-table th:first-child { border-radius: 6px 0 0 0; }
+  .polarization-table th:last-child { border-radius: 0 6px 0 0; }
+  .polarization-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--gray-border);
+    vertical-align: top;
+    line-height: 1.7;
+  }
+  .polarization-table tr:nth-child(even) td { background: var(--gray-bg); }
+  .tag-hard { display: inline-block; background: #e8f0fb; color: #1a3a8f; font-size: 11px; font-weight: 700; border-radius: 3px; padding: 2px 8px; }
+  .tag-easy { display: inline-block; background: #e8fbe8; color: #1a6b2a; font-size: 11px; font-weight: 700; border-radius: 3px; padding: 2px 8px; }
+
+  /* ── アクションカード ── */
+  .action-card {
+    background: var(--gray-bg);
+    border-radius: 10px;
+    border: 1px solid var(--gray-border);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .action-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent);
+  }
+  .action-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .action-body {
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--text);
+  }
+  .action-point {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--gray-border);
+    font-size: 12.5px;
+    color: var(--text-light);
+  }
+
+  /* ── チェックリスト ── */
+  .checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .checklist li {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-border);
+    font-size: 13.5px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num {
+    background: var(--navy);
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .check-content strong {
+    display: block;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .check-content small {
+    color: var(--text-light);
+    font-size: 12px;
+  }
+
+  /* ── 示唆セクション ── */
+  .implication-box {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 32px 36px;
+    margin-bottom: 20px;
+  }
+  .implication-title {
+    font-size: 17px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .implication-body {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+  .implication-items {
+    list-style: none;
+    padding: 0;
+  }
+  .implication-items li {
+    padding: 8px 0 8px 20px;
+    position: relative;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .implication-items li:last-child { border-bottom: none; }
+  .implication-items li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 9px;
+    top: 11px;
+  }
+
+  /* ── フッター ── */
+  .footer {
+    background: var(--gray-bg);
+    padding: 28px 56px;
+    border-top: 1px solid var(--gray-border);
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+  .footer strong {
+    display: block;
+    font-size: 12px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .footer .sources {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--gray-border);
+  }
+
+  /* ── 印刷・PDF対応 ── */
+  @media print {
+    body { font-size: 12px; }
+    .header { padding: 36px 40px 28px; }
+    .content { padding: 32px 40px; }
+    .footer { padding: 20px 40px; }
+    .action-card, .exec-summary, .implication-box { break-inside: avoid; }
+    @page { margin: 0; size: A4; }
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 32px 24px 28px; }
+    .header h1 { font-size: 22px; }
+    .content { padding: 32px 24px; }
+    .footer { padding: 24px; }
+    .data-grid { grid-template-columns: repeat(2, 1fr); }
+    .polarization-table { font-size: 12px; }
+    .polarization-table td, .polarization-table th { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <div class="header-label">HR Insights Report ／ 採用市場</div>
+    <h1>5月採用市場レポート 2026</h1>
+    <h2>GW明け再加速・エンジニア求人1.2倍・二極化が鮮明に<br>——今、採用担当者が動くべき3つの理由</h2>
+    <div class="header-meta">
+      <span>発行：2026年5月23日</span>
+      <span>対象：採用担当者・人事責任者・経営者</span>
+    </div>
+  </div>
+
+  <!-- コンテンツ -->
+  <div class="content">
+
+    <!-- Executive Summary -->
+    <div class="exec-summary">
+      <div class="exec-summary-label">Executive Summary</div>
+      <p>
+        2026年5月、採用市場はゴールデンウィーク明けの<span class="highlight">再加速フェーズ</span>に入りました。
+        転職求人倍率は<span class="highlight">2.39倍</span>（2026年3月時点）と高水準を維持し、
+        エンジニア求人数は前年同月比<span class="highlight">1.2倍</span>に拡大。
+        一方で「採用難易度が上がる企業・下がる企業」の二極化が鮮明になっており、
+        <span class="highlight">ダイレクトリクルーティングと選考プロセスの質</span>が採用成否を分ける局面を迎えています。
+      </p>
+    </div>
+
+    <!-- Section 1: 市場データ -->
+    <div class="section">
+      <div class="section-number">Section 01</div>
+      <div class="section-title">2026年5月の採用市場データ<br>数字で読む現在地</div>
+      <p class="section-lead">
+        厚生労働省・各民間調査の最新データをもとに、5月時点の採用市場の全体像を整理します。
+      </p>
+
+      <div class="data-grid">
+        <div class="data-card">
+          <span class="num">2.39<span class="unit">倍</span></span>
+          <div class="label">転職求人倍率<br>（2026年3月時点）</div>
+        </div>
+        <div class="data-card">
+          <span class="num">1.18<span class="unit">倍</span></span>
+          <div class="label">有効求人倍率<br>（2026年3月・季節調整値）</div>
+        </div>
+        <div class="data-card">
+          <span class="num">+9.2<span class="unit">%</span></span>
+          <div class="label">求人数・前年同月比増<br>（転職求人）</div>
+        </div>
+      </div>
+
+      <div class="data-grid">
+        <div class="data-card">
+          <span class="num">×1.2</span>
+          <div class="label">エンジニア求人数<br>（2025年1月比・2026年4月末）</div>
+        </div>
+        <div class="data-card">
+          <span class="num">×1.1</span>
+          <div class="label">営業・マーケ求人数<br>（2025年1月比）</div>
+        </div>
+        <div class="data-card">
+          <span class="num">20/21</span>
+          <div class="label">活況業界数<br>（JAC Recruitment 2026年予測）</div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        📌 <strong>5月の市場特性：</strong>ゴールデンウィーク明けは、4月に採用を抑制していた企業が再始動するタイミング。
+        3月までに充足しなかったポジションや新年度の配置見直しによる新規ニーズが集中する時期です。
+        企業・求職者双方の活動が再加速する「黄金の採用月」といえます。
+      </div>
+    </div>
+
+    <!-- Section 2: 二極化 -->
+    <div class="section">
+      <div class="section-number">Section 02</div>
+      <div class="section-title">採用市場の「二極化」が鮮明に<br>難易度が上がる企業・下がる企業の違い</div>
+      <p class="section-lead">
+        全体の求人倍率は高水準を維持しているものの、企業ごとに採用難易度は大きく異なります。
+        「なぜ二極化するのか」——その構造を理解することが、採用戦略の見直しにつながります。
+      </p>
+
+      <table class="polarization-table">
+        <thead>
+          <tr>
+            <th style="width:35%">軸</th>
+            <th style="width:32.5%"><span style="color:#f0c060;">採用が難しくなる企業</span></th>
+            <th style="width:32.5%"><span style="color:#8ceba0;">採用がしやすい企業</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>訴求している人材</strong></td>
+            <td><span class="tag-hard">難化</span><br>専門性・スキル要件が高い職種（エンジニア・データサイエンティスト・会計士等）</td>
+            <td><span class="tag-easy">易化</span><br>汎用スキルが中心の職種（一般事務・コールセンター等）</td>
+          </tr>
+          <tr>
+            <td><strong>採用手法</strong></td>
+            <td><span class="tag-hard">難化</span><br>求人票掲載のみで求職者の応募を待つ「受け身型」</td>
+            <td><span class="tag-easy">易化</span><br>ダイレクトリクルーティングで能動的にアプローチする企業</td>
+          </tr>
+          <tr>
+            <td><strong>選考プロセス</strong></td>
+            <td><span class="tag-hard">難化</span><br>選考フェーズが多く意思決定に時間がかかる企業</td>
+            <td><span class="tag-easy">易化</span><br>選考ステップを絞り、2〜3週間以内に内定出しができる企業</td>
+          </tr>
+          <tr>
+            <td><strong>雇用ブランド</strong></td>
+            <td><span class="tag-hard">難化</span><br>人的資本開示・口コミ評価が弱く、候補者が情報不足を感じる企業</td>
+            <td><span class="tag-easy">易化</span><br>Glassdoor・OpenWorkの評価が高く、採用広報を積極展開する企業</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 3: 採用担当者が今動くべき理由 -->
+    <div class="section">
+      <div class="section-number">Section 03</div>
+      <div class="section-title">今、採用担当者が動くべき<br>5月ならではの3つの理由</div>
+
+      <div class="action-card">
+        <div class="action-title">① 充足できなかったポジションへの「再アタック」が最優先</div>
+        <p class="action-body">
+          4月に採用を一時抑制していた企業も、5月には改めて母集団形成に着手します。
+          3月末までに採用充足できなかった求人は、今が再始動のタイミング。
+          求人票の内容を4月の選考で得た反省・フィードバックをもとに見直し、
+          より刺さるメッセージに更新することが重要です。
+        </p>
+        <div class="action-point">💡 <strong>アクション：</strong>未充足ポジションの求人票を今週中にレビューし、ターゲット層へのメッセージを更新する</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-title">② ダイレクトリクルーティングの「量から質」への転換</div>
+        <p class="action-body">
+          5月は応募数が急増する時期ではなく、企業側が能動的に動く必要があります。
+          特にエンジニア・専門職領域では、求人掲載だけでは限界があり、
+          ダイレクトリクルーティング（スカウト媒体・LinkedIn等）での能動的なアプローチが差別化のポイントになります。
+          重要なのはスカウト数よりも<strong>返信率・面談転換率</strong>の改善です。
+        </p>
+        <div class="action-point">💡 <strong>アクション：</strong>スカウト文のABテストを実施し、職種別の返信率を可視化する</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-title">③ 面接官のトレーニングが採用競争力に直結する</div>
+        <p class="action-body">
+          求職者が複数の選考を並行して進める現在、面接での「候補者体験（CX）」が内定承諾率を左右します。
+          特にGW明けは求職者の活動も活発化するため、面接官の評価基準の統一・フィードバックの質向上・
+          選考スピードの短縮が急務です。
+          面接官が「選考する側」だけでなく「選ばれる側」の意識を持てているかを確認しましょう。
+        </p>
+        <div class="action-point">💡 <strong>アクション：</strong>面接官向けの簡単なブリーフィングを5月中に実施し、候補者への魅力付けポイントを共有する</div>
+      </div>
+    </div>
+
+    <!-- Section 4：チェックリスト -->
+    <div class="section">
+      <div class="section-number">Section 04</div>
+      <div class="section-title">5月の採用活動<br>今週確認すべき5つのポイント</div>
+
+      <ul class="checklist">
+        <li>
+          <div class="check-num">1</div>
+          <div class="check-content">
+            <strong>未充足ポジションのリストアップと優先順位付け</strong>
+            <small>3月末までに充足できなかった求人を洗い出し、5月中に再始動するものを決める</small>
+          </div>
+        </li>
+        <li>
+          <div class="check-num">2</div>
+          <div class="check-content">
+            <strong>求人票・スカウト文のメッセージ更新</strong>
+            <small>4月の選考で得た候補者の声・辞退理由をもとに訴求ポイントを見直す</small>
+          </div>
+        </li>
+        <li>
+          <div class="check-num">3</div>
+          <div class="check-content">
+            <strong>ダイレクトリクルーティングの返信率確認</strong>
+            <small>媒体別・職種別のスカウト返信率を数字で把握し、改善点を特定する</small>
+          </div>
+        </li>
+        <li>
+          <div class="check-num">4</div>
+          <div class="check-content">
+            <strong>選考プロセスのスピード確認</strong>
+            <small>一次面接から内定出しまでの平均日数を計測し、2週間以内を目標に改善策を検討する</small>
+          </div>
+        </li>
+        <li>
+          <div class="check-num">5</div>
+          <div class="check-content">
+            <strong>面接官への情報共有・ブリーフィング実施</strong>
+            <small>候補者への魅力付けポイント・よくある懸念点への回答を面接官全員で共有する</small>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 5：示唆 -->
+    <div class="section">
+      <div class="section-number">Section 05</div>
+      <div class="section-title">人材紹介・採用支援事業者への示唆<br>「5月のスピード」が年間採用を決める</div>
+
+      <div class="implication-box">
+        <div class="implication-title">
+          5月の採用活動の質が、<br>2026年の通期採用結果を左右します
+        </div>
+        <p class="implication-body">
+          GW明けの5〜6月は、採用市場において1年で最も重要な「仕込み期間」のひとつです。
+          ここで母集団形成に成功した企業は夏以降の採用充足率が高く、
+          出遅れた企業は下半期に「採用難」の状態に陥るリスクがあります。
+          採用支援・人材紹介事業者として、クライアント企業の5月の動きを後押しする提案が今まさに求められています。
+        </p>
+        <ul class="implication-items">
+          <li>未充足ポジションの棚卸しをクライアントと一緒に行うプロアクティブな訪問</li>
+          <li>求人票・スカウト文の改善提案——候補者目線でのリライトサービス</li>
+          <li>面接官トレーニングの提供——選考の質と候補者体験を同時に改善</li>
+          <li>選考スピード改善のための採用フロー見直し提案</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- フッター -->
+  <div class="footer">
+    <strong>出典・参考資料</strong>
+    ・doda「転職求人倍率レポート 2026年3月」<br>
+    ・厚生労働省「一般職業紹介状況（2026年3月分）」<br>
+    ・ウマい人事「2026年5月求人市場動向」<br>
+    ・JAC Recruitment「2026年転職市場・中途採用動向」<br>
+    ・マイナビキャリアリサーチLab「2026年の転職市場・中途採用動向（4月更新）」<br>
+    ・内藤一水社「2026年転職市場は二極化へ」
+
+    <div class="sources">
+      ※ 本レポートに記載の市場データは2026年5月23日時点の公開情報に基づきます。<br>
+      ※ 法律・制度情報については最新の法令を必ずご確認ください。<br>
+      ※ 社外秘情報は含みません。
+    </div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
