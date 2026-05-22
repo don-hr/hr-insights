@@ -5,40 +5,558 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HR Insights — 人事・HR最新レポート</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background: #f4f6f8; color: #1e2d3d; }
-  .header { background: #1a3a5c; color: #fff; padding: 40px 48px; }
-  .header h1 { font-size: 24px; font-weight: 900; margin-bottom: 8px; }
-  .header p { font-size: 13px; color: rgba(255,255,255,0.7); }
-  .container { max-width: 800px; margin: 40px auto; padding: 0 24px; }
-  .card { background: #fff; border-radius: 10px; border: 1px solid #dde2e8; padding: 28px 32px; margin-bottom: 20px; text-decoration: none; display: block; transition: box-shadow 0.2s; }
-  .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-  .card-label { font-size: 11px; color: #c8a84b; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
-  .card-title { font-size: 18px; font-weight: 900; color: #1a3a5c; margin-bottom: 8px; line-height: 1.4; }
-  .card-desc { font-size: 13px; color: #5a6a7a; line-height: 1.7; }
-  .card-date { font-size: 11px; color: #9aa8b5; margin-top: 14px; }
-  .footer { text-align: center; padding: 32px; font-size: 11px; color: #9aa8b5; }
+
+  :root {
+    --navy: #1a3a5c;
+    --navy-light: #2a5080;
+    --accent: #c8a84b;
+    --gray-bg: #f4f6f8;
+    --gray-border: #dde2e8;
+    --text: #1e2d3d;
+    --text-light: #5a6a7a;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+    background: var(--gray-bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── ヘッダー ── */
+  .header {
+    background: var(--navy);
+    color: #fff;
+    padding: 40px 48px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(200,168,75,0.12);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -70px; right: 80px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  .header-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+
+  /* ── フィルターバー ── */
+  .filter-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--gray-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .filter-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .filter-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-border);
+    flex-wrap: wrap;
+  }
+  .filter-section:last-child {
+    border-bottom: none;
+  }
+  .filter-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    min-width: 52px;
+  }
+  .filter-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1.5px solid var(--gray-border);
+    background: #fff;
+    color: var(--text-light);
+    transition: all 0.15s;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .chip:hover {
+    border-color: var(--navy);
+    color: var(--navy);
+  }
+  .chip.active {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+    font-weight: 700;
+  }
+  .chip.active.cat-採用市場      { background: #1a5c8a; border-color: #1a5c8a; }
+  .chip.active.cat-人的資本経営  { background: #1a4a2a; border-color: #1a4a2a; }
+  .chip.active.cat-組織開発      { background: #6b2d8a; border-color: #6b2d8a; }
+  .chip.active.cat-HR-Tech-AI    { background: #8a3a1a; border-color: #8a3a1a; }
+  .chip.active.cat-法改正・制度  { background: #8a1a1a; border-color: #8a1a1a; }
+
+  /* カテゴリドット */
+  .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+    flex-shrink: 0;
+  }
+  .dot-採用市場     { background: #1a8adc; }
+  .dot-人的資本経営 { background: #2a8a4a; }
+  .dot-組織開発     { background: #9a4adc; }
+  .dot-HR-Tech-AI   { background: #dc6a1a; }
+  .dot-法改正・制度 { background: #dc1a1a; }
+
+  /* ── メインコンテンツ ── */
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 48px 64px;
+  }
+
+  /* ── 結果ヘッダー ── */
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .results-count {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+  .results-count strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+  .active-filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .active-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 4px 10px;
+  }
+  .active-tag .remove {
+    cursor: pointer;
+    opacity: 0.7;
+    font-size: 13px;
+    line-height: 1;
+  }
+  .active-tag .remove:hover { opacity: 1; }
+
+  /* ── 記事カード ── */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--gray-border);
+    padding: 24px 28px;
+    text-decoration: none;
+    display: flex;
+    gap: 20px;
+    transition: box-shadow 0.2s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+  }
+  .card[data-category="採用市場"]::before     { background: #1a8adc; }
+  .card[data-category="人的資本経営"]::before { background: #2a8a4a; }
+  .card[data-category="組織開発"]::before     { background: #9a4adc; }
+  .card[data-category="HR Tech・AI"]::before  { background: #dc6a1a; }
+  .card[data-category="法改正・制度"]::before { background: #dc1a1a; }
+  .card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+  }
+  .card-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .card-category {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .card-category.cat-採用市場     { background: #e8f4fb; color: #1a5c8a; }
+  .card-category.cat-人的資本経営 { background: #e8f5ec; color: #1a4a2a; }
+  .card-category.cat-組織開発     { background: #f3e8fb; color: #5a2a8a; }
+  .card-category.cat-HR-Tech-AI   { background: #fbf0e8; color: #8a3a1a; }
+  .card-category.cat-法改正・制度 { background: #fbe8e8; color: #8a1a1a; }
+  .card-date {
+    font-size: 11px;
+    color: var(--text-light);
+  }
+  .card-title {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .card-subtitle {
+    font-size: 12.5px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .card-desc {
+    font-size: 12.5px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .card-arrow {
+    align-self: center;
+    color: var(--gray-border);
+    font-size: 20px;
+    flex-shrink: 0;
+    transition: color 0.15s, transform 0.15s;
+  }
+  .card:hover .card-arrow {
+    color: var(--navy);
+    transform: translateX(3px);
+  }
+
+  /* ── 空状態 ── */
+  .empty {
+    text-align: center;
+    padding: 64px 32px;
+    color: var(--text-light);
+  }
+  .empty-icon { font-size: 40px; margin-bottom: 16px; }
+  .empty h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .empty p { font-size: 13px; }
+
+  /* ── フッター ── */
+  .footer {
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 11px;
+    color: #9aa8b5;
+    border-top: 1px solid var(--gray-border);
+    background: #fff;
+  }
+
+  /* ── レスポンシブ ── */
+  @media (max-width: 640px) {
+    .header { padding: 28px 20px 24px; }
+    .header h1 { font-size: 22px; }
+    .filter-inner { padding: 0 16px; }
+    .main { padding: 20px 16px 48px; }
+    .card { padding: 18px 16px 18px 20px; gap: 12px; }
+    .card-title { font-size: 15px; }
+    .results-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
 </style>
 </head>
 <body>
+
+<!-- ヘッダー -->
 <div class="header">
-  <h1>HR Insights</h1>
-  <p>人事・HR領域の最新レポート</p>
+  <div class="header-inner">
+    <div class="header-label">HR Insights</div>
+    <h1>人事・HR 最新レポート</h1>
+    <p class="header-desc">採用市場・人的資本経営・組織開発・HR Tech・法改正の最新動向を発信</p>
+  </div>
 </div>
-<div class="container">
-  <a class="card" href="recruit_market_202605_20260523.html">
-    <div class="card-label">採用市場</div>
-    <div class="card-title">5月採用市場レポート 2026<br>GW明け再加速・エンジニア求人1.2倍・二極化が鮮明に——今、採用担当者が動くべき3つの理由</div>
-    <div class="card-desc">転職求人倍率2.39倍・求人数前年比+9.2%の市場で何が起きているか。採用難易度の二極化構造と、5月に動くべき具体的アクションを解説。</div>
-    <div class="card-date">2026年5月23日</div>
-  </a>
-  <a class="card" href="human_capital_disclosure_20260509.html">
-    <div class="card-label">人的資本経営</div>
-    <div class="card-title">人的資本開示 義務拡充レポート<br>2026年3月期から何が変わるか──日系大手3社の先進事例と実務対応ポイント</div>
-    <div class="card-desc">2026年3月期の有価証券報告書から義務拡充。丸井グループ・日立製作所・デンソーの先進事例と実務チェックリストを解説。</div>
-    <div class="card-date">2026年5月9日</div>
-  </a>
+
+<!-- フィルターバー -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="filter-section">
+      <span class="filter-label">カテゴリ</span>
+      <div class="filter-chips" id="cat-chips">
+        <span class="chip active" data-cat="all">すべて</span>
+        <span class="chip" data-cat="採用市場"><span class="dot dot-採用市場"></span>採用市場</span>
+        <span class="chip" data-cat="人的資本経営"><span class="dot dot-人的資本経営"></span>人的資本経営</span>
+        <span class="chip" data-cat="組織開発"><span class="dot dot-組織開発"></span>組織開発</span>
+        <span class="chip" data-cat="HR Tech・AI"><span class="dot dot-HR-Tech-AI"></span>HR Tech・AI</span>
+        <span class="chip" data-cat="法改正・制度"><span class="dot dot-法改正・制度"></span>法改正・制度</span>
+      </div>
+    </div>
+    <div class="filter-section">
+      <span class="filter-label">年月</span>
+      <div class="filter-chips" id="month-chips">
+        <span class="chip active" data-month="all">すべて</span>
+        <!-- 年月チップはJSで動的生成 -->
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- メイン -->
+<div class="main">
+  <div class="results-header">
+    <div class="results-count" id="results-count"></div>
+    <div class="active-filters" id="active-filters"></div>
+  </div>
+  <div class="cards" id="cards"></div>
+  <div class="empty" id="empty" style="display:none;">
+    <div class="empty-icon">🔍</div>
+    <h3>記事が見つかりません</h3>
+    <p>条件を変えて検索してみてください</p>
+  </div>
+</div>
+
+<!-- フッター -->
 <div class="footer">© 2026 HR Insights. All rights reserved.</div>
+
+<script>
+// =============================================
+// 記事データ — 新記事追加時はここに追記するだけ
+// =============================================
+const ARTICLES = [
+  {
+    file: "recruit_market_202605_20260523.html",
+    title: "5月採用市場レポート 2026",
+    subtitle: "GW明け再加速・エンジニア求人1.2倍・二極化が鮮明に——今、採用担当者が動くべき3つの理由",
+    category: "採用市場",
+    date: "2026-05-23",
+    desc: "転職求人倍率2.39倍・求人数前年比+9.2%の市場で何が起きているか。採用難易度の二極化構造と、5月に動くべき具体的アクションを解説。"
+  },
+  {
+    file: "human_capital_disclosure_20260509.html",
+    title: "人的資本開示 義務拡充レポート",
+    subtitle: "2026年3月期から何が変わるか──日系大手3社の先進事例と実務対応ポイント",
+    category: "人的資本経営",
+    date: "2026-05-09",
+    desc: "2026年3月期の有価証券報告書から義務拡充。丸井グループ・日立製作所・デンソーの先進事例と実務チェックリストを解説。"
+  }
+];
+
+// =============================================
+// フィルター状態
+// =============================================
+let activeCat   = "all";
+let activeMonth = "all";
+
+// =============================================
+// 年月ラベル生成（記事データから自動抽出）
+// =============================================
+function getMonthLabel(dateStr) {
+  const [y, m] = dateStr.split("-");
+  return `${y}年${parseInt(m)}月`;
+}
+
+function buildMonthChips() {
+  const months = [...new Set(ARTICLES.map(a => getMonthLabel(a.date)))];
+  // 新しい順に並べる
+  months.sort((a, b) => {
+    const toNum = s => {
+      const [y, rest] = s.split("年");
+      return parseInt(y) * 100 + parseInt(rest);
+    };
+    return toNum(b) - toNum(a);
+  });
+  const container = document.getElementById("month-chips");
+  months.forEach(m => {
+    const chip = document.createElement("span");
+    chip.className = "chip";
+    chip.dataset.month = m;
+    chip.textContent = m;
+    chip.addEventListener("click", () => onMonthClick(chip, m));
+    container.appendChild(chip);
+  });
+}
+
+// =============================================
+// レンダリング
+// =============================================
+function renderCards() {
+  const container = document.getElementById("cards");
+  const empty     = document.getElementById("empty");
+  const countEl   = document.getElementById("results-count");
+  const activeEl  = document.getElementById("active-filters");
+
+  const filtered = ARTICLES.filter(a => {
+    const catOk   = activeCat   === "all" || a.category === activeCat;
+    const monthOk = activeMonth === "all" || getMonthLabel(a.date) === activeMonth;
+    return catOk && monthOk;
+  });
+
+  // 結果数
+  countEl.innerHTML = `<strong>${filtered.length}</strong> 件の記事`;
+
+  // アクティブフィルタータグ
+  activeEl.innerHTML = "";
+  if (activeCat !== "all") {
+    const tag = document.createElement("span");
+    tag.className = "active-tag";
+    tag.innerHTML = `${activeCat} <span class="remove" data-type="cat">✕</span>`;
+    tag.querySelector(".remove").addEventListener("click", () => {
+      activeCat = "all";
+      document.querySelectorAll("#cat-chips .chip").forEach(c => c.classList.remove("active"));
+      document.querySelector('#cat-chips [data-cat="all"]').classList.add("active");
+      renderCards();
+    });
+    activeEl.appendChild(tag);
+  }
+  if (activeMonth !== "all") {
+    const tag = document.createElement("span");
+    tag.className = "active-tag";
+    tag.innerHTML = `${activeMonth} <span class="remove" data-type="month">✕</span>`;
+    tag.querySelector(".remove").addEventListener("click", () => {
+      activeMonth = "all";
+      document.querySelectorAll("#month-chips .chip").forEach(c => c.classList.remove("active"));
+      document.querySelector('#month-chips [data-month="all"]').classList.add("active");
+      renderCards();
+    });
+    activeEl.appendChild(tag);
+  }
+
+  // カード描画
+  container.innerHTML = "";
+  if (filtered.length === 0) {
+    empty.style.display = "block";
+    return;
+  }
+  empty.style.display = "none";
+
+  filtered.forEach(a => {
+    const catClass = "cat-" + a.category.replace(/\s|・/g, "-").replace(/Tech/g, "Tech");
+    const dateLabel = (() => {
+      const [y, m, d] = a.date.split("-");
+      return `${y}年${parseInt(m)}月${parseInt(d)}日`;
+    })();
+
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = a.file;
+    card.dataset.category = a.category;
+    card.innerHTML = `
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-category ${catClass}">${a.category}</span>
+          <span class="card-date">${dateLabel}</span>
+        </div>
+        <div class="card-title">${a.title}</div>
+        <div class="card-subtitle">${a.subtitle}</div>
+        <div class="card-desc">${a.desc}</div>
+      </div>
+      <div class="card-arrow">›</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// =============================================
+// イベント
+// =============================================
+function onCatClick(chip, cat) {
+  activeCat = cat;
+  document.querySelectorAll("#cat-chips .chip").forEach(c => {
+    c.classList.remove("active");
+    // カテゴリ色クラスを除去
+    c.classList.forEach(cls => { if (cls.startsWith("cat-")) c.classList.remove(cls); });
+  });
+  chip.classList.add("active");
+  if (cat !== "all") {
+    const cls = "cat-" + cat.replace(/\s|・/g, "-");
+    chip.classList.add(cls);
+  }
+  renderCards();
+}
+
+function onMonthClick(chip, month) {
+  activeMonth = month;
+  document.querySelectorAll("#month-chips .chip").forEach(c => c.classList.remove("active"));
+  chip.classList.add("active");
+  renderCards();
+}
+
+// カテゴリチップのクリックを紐付け
+document.querySelectorAll("#cat-chips .chip").forEach(chip => {
+  chip.addEventListener("click", () => onCatClick(chip, chip.dataset.cat));
+});
+// すべてチップ（month）
+document.querySelector('#month-chips [data-month="all"]').addEventListener("click", chip => {
+  onMonthClick(chip.target, "all");
+});
+
+// =============================================
+// 初期化
+// =============================================
+buildMonthChips();
+renderCards();
+</script>
+
 </body>
 </html>
