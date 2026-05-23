@@ -6,9 +6,7 @@
 <title>HR Insights — 人事・HR最新レポート</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
     --navy: #1a3a5c;
     --navy-light: #2a5080;
@@ -18,14 +16,12 @@
     --text: #1e2d3d;
     --text-light: #5a6a7a;
   }
-
   body {
     font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
     background: var(--gray-bg);
     color: var(--text);
     min-height: 100vh;
   }
-
   /* ── ヘッダー ── */
   .header {
     background: var(--navy);
@@ -74,7 +70,6 @@
     color: rgba(255,255,255,0.65);
     line-height: 1.6;
   }
-
   /* ── フィルターバー ── */
   .filter-bar {
     background: #fff;
@@ -143,7 +138,6 @@
   .chip.active.cat-組織開発      { background: #6b2d8a; border-color: #6b2d8a; }
   .chip.active.cat-HR-Tech-AI    { background: #8a3a1a; border-color: #8a3a1a; }
   .chip.active.cat-法改正・制度  { background: #8a1a1a; border-color: #8a1a1a; }
-
   /* カテゴリドット */
   .dot {
     width: 7px; height: 7px;
@@ -157,14 +151,12 @@
   .dot-組織開発     { background: #9a4adc; }
   .dot-HR-Tech-AI   { background: #dc6a1a; }
   .dot-法改正・制度 { background: #dc1a1a; }
-
   /* ── メインコンテンツ ── */
   .main {
     max-width: 900px;
     margin: 0 auto;
     padding: 32px 48px 64px;
   }
-
   /* ── 結果ヘッダー ── */
   .results-header {
     display: flex;
@@ -203,7 +195,6 @@
     line-height: 1;
   }
   .active-tag .remove:hover { opacity: 1; }
-
   /* ── 記事カード ── */
   .cards {
     display: flex;
@@ -294,7 +285,6 @@
     color: var(--navy);
     transform: translateX(3px);
   }
-
   /* ── 空状態 ── */
   .empty {
     text-align: center;
@@ -304,7 +294,6 @@
   .empty-icon { font-size: 40px; margin-bottom: 16px; }
   .empty h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
   .empty p { font-size: 13px; }
-
   /* ── フッター ── */
   .footer {
     text-align: center;
@@ -314,7 +303,6 @@
     border-top: 1px solid var(--gray-border);
     background: #fff;
   }
-
   /* ── レスポンシブ ── */
   @media (max-width: 640px) {
     .header { padding: 28px 20px 24px; }
@@ -328,7 +316,6 @@
 </style>
 </head>
 <body>
-
 <!-- ヘッダー -->
 <div class="header">
   <div class="header-inner">
@@ -337,7 +324,6 @@
     <p class="header-desc">採用市場・人的資本経営・組織開発・HR Tech・法改正の最新動向を発信</p>
   </div>
 </div>
-
 <!-- フィルターバー -->
 <div class="filter-bar">
   <div class="filter-inner">
@@ -361,7 +347,6 @@
     </div>
   </div>
 </div>
-
 <!-- メイン -->
 <div class="main">
   <div class="results-header">
@@ -375,22 +360,13 @@
     <p>条件を変えて検索してみてください</p>
   </div>
 </div>
-
 <!-- フッター -->
 <div class="footer">© 2026 HR Insights. All rights reserved.</div>
-
 <script>
 // =============================================
 // 記事データ — 新記事追加時はここに追記するだけ
 // =============================================
-const ARTICLES = [\n  {
-    file: "article_20260524003355.html",
-    title: "リクルートの人事戦略から学ぶ組織成長と人材マネジメント",
-    subtitle: "先進企業の実践に見るCHROが取り組むべき施策",
-    category: "人的資本経営",
-    date: "2026-05-24",
-    desc: "リクルートが推進するジョブ型人事制度、D&I戦略、HRテック活用など5つの柱を分析し、企業経営者・CHROが取り組むべき短期・中期・長期のロードマップを解説する。"
-  },
+const ARTICLES = [
   {
     file: "recruit_market_202605_20260523.html",
     title: "5月採用市場レポート 2026",
@@ -408,13 +384,11 @@ const ARTICLES = [\n  {
     desc: "2026年3月期の有価証券報告書から義務拡充。丸井グループ・日立製作所・デンソーの先進事例と実務チェックリストを解説。"
   }
 ];
-
 // =============================================
 // フィルター状態
 // =============================================
 let activeCat   = "all";
 let activeMonth = "all";
-
 // =============================================
 // 年月ラベル生成（記事データから自動抽出）
 // =============================================
@@ -422,7 +396,6 @@ function getMonthLabel(dateStr) {
   const [y, m] = dateStr.split("-");
   return `${y}年${parseInt(m)}月`;
 }
-
 function buildMonthChips() {
   const months = [...new Set(ARTICLES.map(a => getMonthLabel(a.date)))];
   // 新しい順に並べる
@@ -443,7 +416,6 @@ function buildMonthChips() {
     container.appendChild(chip);
   });
 }
-
 // =============================================
 // レンダリング
 // =============================================
@@ -452,16 +424,13 @@ function renderCards() {
   const empty     = document.getElementById("empty");
   const countEl   = document.getElementById("results-count");
   const activeEl  = document.getElementById("active-filters");
-
   const filtered = ARTICLES.filter(a => {
     const catOk   = activeCat   === "all" || a.category === activeCat;
     const monthOk = activeMonth === "all" || getMonthLabel(a.date) === activeMonth;
     return catOk && monthOk;
   });
-
   // 結果数
   countEl.innerHTML = `<strong>${filtered.length}</strong> 件の記事`;
-
   // アクティブフィルタータグ
   activeEl.innerHTML = "";
   if (activeCat !== "all") {
@@ -488,7 +457,6 @@ function renderCards() {
     });
     activeEl.appendChild(tag);
   }
-
   // カード描画
   container.innerHTML = "";
   if (filtered.length === 0) {
@@ -496,14 +464,12 @@ function renderCards() {
     return;
   }
   empty.style.display = "none";
-
   filtered.forEach(a => {
     const catClass = "cat-" + a.category.replace(/\s|・/g, "-").replace(/Tech/g, "Tech");
     const dateLabel = (() => {
       const [y, m, d] = a.date.split("-");
       return `${y}年${parseInt(m)}月${parseInt(d)}日`;
     })();
-
     const card = document.createElement("a");
     card.className = "card";
     card.href = a.file;
@@ -523,7 +489,6 @@ function renderCards() {
     container.appendChild(card);
   });
 }
-
 // =============================================
 // イベント
 // =============================================
@@ -541,14 +506,12 @@ function onCatClick(chip, cat) {
   }
   renderCards();
 }
-
 function onMonthClick(chip, month) {
   activeMonth = month;
   document.querySelectorAll("#month-chips .chip").forEach(c => c.classList.remove("active"));
   chip.classList.add("active");
   renderCards();
 }
-
 // カテゴリチップのクリックを紐付け
 document.querySelectorAll("#cat-chips .chip").forEach(chip => {
   chip.addEventListener("click", () => onCatClick(chip, chip.dataset.cat));
@@ -557,13 +520,11 @@ document.querySelectorAll("#cat-chips .chip").forEach(chip => {
 document.querySelector('#month-chips [data-month="all"]').addEventListener("click", chip => {
   onMonthClick(chip.target, "all");
 });
-
 // =============================================
 // 初期化
 // =============================================
 buildMonthChips();
 renderCards();
 </script>
-
 </body>
 </html>
