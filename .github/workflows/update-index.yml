@@ -1,0 +1,38 @@
+name: Update Article Index
+
+on:
+  push:
+    paths:
+      - 'article-metadata/**.json'
+  workflow_dispatch:
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild index.html article list
+        run: |
+          node -e "
+          const fs = require('fs');
+          const dir = 'article-metadata';
+          const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
+          const articles = files.map(f => {
+            try { return JSON.parse(fs.readFileSync(dir + '/' + f, 'utf8')); }
+            catch(e) { console.error('Skip:', f, e.message); return null; }
+          }).filter(Boolean).sort((a,b) => b.date.localeCompare(a.date));
+          let html = fs.readFileSync('index.html', 'utf8');
+          const arr = 'const ARTICLES = [\n' + articles.map(a => '  ' + JSON.stringify(a)).join(',\n') + '\n];';
+          html = html.replace(/const ARTICLES = \[[\s\S]*?\];/, arr);
+          fs.writeFileSync('index.html', html);
+          console.log('Updated with', articles.length, 'articles');
+          "
+      - name: Commit and push
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add index.html
+          git diff --staged --quiet || git commit -m "Auto: update article index [skip ci]"
+          git push
