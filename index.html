@@ -285,6 +285,37 @@
     color: var(--navy);
     transform: translateX(3px);
   }
+  /* ── カードサムネイル ── */
+  .card-thumb {
+    width: 76px; height: 76px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    align-self: center;
+    background: linear-gradient(135deg, #1a3a5c 0%, #2a5080 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-thumb::after {
+    content: '';
+    position: absolute;
+    bottom: -16px; right: -16px;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .card-thumb-icon { font-size: 30px; line-height: 1; position: relative; z-index: 1; }
+  .cat-thumb-採用市場     { background: linear-gradient(135deg, #0e5a8a 0%, #1a7abc 100%); }
+  .cat-thumb-人的資本経営 { background: linear-gradient(135deg, #0e5a2a 0%, #1a7a3c 100%); }
+  .cat-thumb-組織開発     { background: linear-gradient(135deg, #4a1a8a 0%, #6a2abc 100%); }
+  .cat-thumb-HR-Tech-AI   { background: linear-gradient(135deg, #7a2a0e 0%, #c8a84b 100%); }
+  .cat-thumb-法改正・制度 { background: linear-gradient(135deg, #7a0e0e 0%, #aa1a1a 100%); }
+  @media (max-width: 640px) {
+    .card-thumb { width: 56px; height: 56px; }
+    .card-thumb-icon { font-size: 22px; }
+  }
   /* ── 空状態 ── */
   .empty {
     text-align: center;
@@ -366,6 +397,14 @@
 // =============================================
 // 記事データ — 新記事追加時はここに追記するだけ
 // =============================================
+const ICONS = {
+  '採用市場':    '🎯',
+  '人的資本経営': '📊',
+  '組織開発':    '🏢',
+  'HR Tech・AI': '🤖',
+  '法改正・制度': '⚖️'
+};
+
 const ARTICLES = [
   {"file":"output/articles/hr-insights-pages/article_20260606084111.html","title":"27卒内々定率77.7％、理系採用危機が顕在化","subtitle":"5月末時点で3ヵ月連続前年割れ。デジタル・AI人材争奪戦の加速により、企業の採用戦略の抜本的見直しが急務","category":"採用市場","date":"2026-06-06","desc":"5月末時点で内々定率が前年割れ3ヵ月連続。理系人材は9.1ポイント減で、デジタル・AI人材競争の激化により採用戦略の抜本的見直しが急務"},
   {"file":"output/articles/hr-insights-pages/article_20260606085435.html","title":"27卒内々定率77.7%、理系採用危機が顕在化","subtitle":"3ヵ月連続で前年割れ。理系人材9.1ポイント減で採用戦略の抜本的見直しが急務","category":"採用市場","date":"2026-06-06","desc":"5月末時点で内々定率が前年同期を3ヵ月連続で下回り、特に理系人材は9.1ポイント減と深刻な状況でCHROの採用戦略見直しが急務となっている。"},
@@ -518,11 +557,16 @@ function renderCards() {
       const [y, m, d] = a.date.split("-");
       return `${y}年${parseInt(m)}月${parseInt(d)}日`;
     })();
+    const thumbKey = a.category.replace(/\s/g, "").replace(/・/g, "-").replace("HRTech-AI", "HR-Tech-AI");
+    const icon = ICONS[a.category] || '📄';
     const card = document.createElement("a");
     card.className = "card";
     card.href = a.file;
     card.dataset.category = a.category;
     card.innerHTML = `
+      <div class="card-thumb cat-thumb-${thumbKey}">
+        <span class="card-thumb-icon">${icon}</span>
+      </div>
       <div class="card-body">
         <div class="card-meta">
           <span class="card-category ${catClass}">${a.category}</span>
