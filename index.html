@@ -287,34 +287,51 @@
   }
   /* ── カードサムネイル ── */
   .card-thumb {
-    width: 76px; height: 76px;
+    width: 160px; min-width: 160px; height: 100px;
     border-radius: 8px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px 12px;
     flex-shrink: 0;
-    align-self: center;
+    align-self: stretch;
     background: linear-gradient(135deg, #1a3a5c 0%, #2a5080 100%);
     position: relative;
     overflow: hidden;
   }
+  .card-thumb::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: rgba(200,168,75,0.12);
+  }
   .card-thumb::after {
     content: '';
     position: absolute;
-    bottom: -16px; right: -16px;
-    width: 48px; height: 48px;
+    bottom: -20px; left: -10px;
+    width: 70px; height: 70px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.05);
   }
-  .card-thumb-icon { font-size: 30px; line-height: 1; position: relative; z-index: 1; }
-  .cat-thumb-採用市場     { background: linear-gradient(135deg, #0e5a8a 0%, #1a7abc 100%); }
-  .cat-thumb-人的資本経営 { background: linear-gradient(135deg, #0e5a2a 0%, #1a7a3c 100%); }
-  .cat-thumb-組織開発     { background: linear-gradient(135deg, #4a1a8a 0%, #6a2abc 100%); }
-  .cat-thumb-HR-Tech-AI   { background: linear-gradient(135deg, #7a2a0e 0%, #c8a84b 100%); }
-  .cat-thumb-法改正・制度 { background: linear-gradient(135deg, #7a0e0e 0%, #aa1a1a 100%); }
+  .card-thumb-inner { position: relative; z-index: 1; }
+  .card-thumb-icon  { font-size: 18px; line-height: 1; display: block; margin-bottom: 4px; }
+  .card-thumb-title {
+    font-size: 11px; font-weight: 700; color: #fff;
+    line-height: 1.4; letter-spacing: -0.2px;
+    display: -webkit-box; -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; overflow: hidden;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+  .cat-thumb-採用市場     { background: linear-gradient(135deg, #0a4a7a 0%, #1a6aac 100%); }
+  .cat-thumb-人的資本経営 { background: linear-gradient(135deg, #0a4a22 0%, #1a6a3a 100%); }
+  .cat-thumb-組織開発     { background: linear-gradient(135deg, #3a0a7a 0%, #5a2aac 100%); }
+  .cat-thumb-HR-Tech-AI   { background: linear-gradient(135deg, #6a200a 0%, #1a3a5c 100%); }
+  .cat-thumb-法改正・制度 { background: linear-gradient(135deg, #6a0a0a 0%, #9a1a1a 100%); }
   @media (max-width: 640px) {
-    .card-thumb { width: 56px; height: 56px; }
-    .card-thumb-icon { font-size: 22px; }
+    .card-thumb { width: 96px; min-width: 96px; height: 80px; }
+    .card-thumb-title { font-size: 10px; -webkit-line-clamp: 2; }
   }
   /* ── 空状態 ── */
   .empty {
@@ -565,7 +582,10 @@ function renderCards() {
     card.dataset.category = a.category;
     card.innerHTML = `
       <div class="card-thumb cat-thumb-${thumbKey}">
-        <span class="card-thumb-icon">${icon}</span>
+        <div class="card-thumb-inner">
+          <span class="card-thumb-icon">${icon}</span>
+          <div class="card-thumb-title">${a.title}</div>
+        </div>
       </div>
       <div class="card-body">
         <div class="card-meta">
