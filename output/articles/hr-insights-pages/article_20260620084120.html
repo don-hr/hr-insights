@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HR Insights">
+<meta property="og:title" content="人事部が「治療家」へ。組織診断能力が経営課題解決の鍵">
+<meta property="og:description" content="単なる労務管理から組織健全性診断へシフトする人事部。CHRO機能強化と組織心理の専門性が急速に求められている。">
+<title>人事部が「治療家」へ。組織診断能力が経営課題解決の鍵｜HR Insights</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1a3a5c;--navy-light:#2a5080;--accent:#c8a84b;--gray:#f4f6f8;--border:#dde2e8;--text:#1e2d3d;--muted:#5a6a7a}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:#fff;line-height:1.8;font-size:14px}
+.page{max-width:800px;margin:0 auto;background:#fff}
+.nav{background:#1a2e4a;padding:12px 24px}.nav a{color:#7eb8f7;text-decoration:none;font-size:14px}
+.thumb{width:100%;height:320px;background:linear-gradient(145deg,var(--navy) 0%,var(--navy-light) 55%,#0d2840 100%);display:flex;align-items:flex-end;padding:0 56px 40px;position:relative;overflow:hidden;border-bottom:4px solid var(--accent)}
+.thumb::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:rgba(200,168,75,0.07);border:1px solid rgba(200,168,75,0.12)}
+.thumb::after{content:'';position:absolute;top:30px;right:80px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.03)}
+.thumb-deco{position:absolute;bottom:-60px;left:30%;width:220px;height:220px;border-radius:50%;background:rgba(200,168,75,0.05);border:1px solid rgba(200,168,75,0.08)}
+.thumb-inner{position:relative;z-index:2;width:100%;max-width:620px}
+.thumb-icon{font-size:32px;display:block;margin-bottom:14px;line-height:1}
+.thumb-cat{display:inline-block;background:var(--accent);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:2px;padding:3px 12px;border-radius:2px;margin-bottom:14px;text-transform:uppercase}
+.thumb-headline{font-size:26px;font-weight:900;color:#fff;line-height:1.35;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,0.35);letter-spacing:-0.3px}
+.thumb-summary{font-size:13px;color:rgba(255,255,255,0.72);line-height:1.65;margin-bottom:16px}
+.thumb-brand{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase}
+.header{background:var(--navy);color:#fff;padding:48px 56px 40px;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(200,168,75,.15)}
+.header::after{content:'';position:absolute;bottom:-60px;right:60px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.05)}
+.header-label{font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:14px;font-weight:700}
+.header h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:10px}
+.header h2{font-size:14px;font-weight:400;color:rgba(255,255,255,.75);margin-bottom:24px;line-height:1.6}
+.header-meta{display:flex;gap:24px;font-size:12px;color:rgba(255,255,255,.6);border-top:1px solid rgba(255,255,255,.15);padding-top:16px}
+.content{padding:48px 56px}
+.exec-summary{background:var(--navy);color:#fff;border-radius:8px;padding:28px 32px;margin-bottom:48px;border-left:4px solid var(--accent)}
+.exec-label{font-size:10px;letter-spacing:2px;color:var(--accent);font-weight:700;margin-bottom:12px;text-transform:uppercase}
+.exec-summary p{font-size:13.5px;line-height:1.9;color:rgba(255,255,255,.88)}
+.section{margin-bottom:52px}
+.section-num{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase}
+.section-title{font-size:20px;font-weight:900;color:var(--navy);border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:20px;line-height:1.4}
+.section p{font-size:13.5px;line-height:1.9;margin-bottom:16px;color:var(--text)}
+.data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 28px}
+.data-card{background:var(--navy);border-radius:8px;padding:18px 16px;text-align:center;color:#fff}
+.data-card .num{font-size:28px;font-weight:900;color:var(--accent);display:block;margin-bottom:4px}
+.data-card .unit{font-size:13px;color:var(--accent)}
+.data-card .label{font-size:11px;color:rgba(255,255,255,.7);line-height:1.5;margin-top:6px}
+.note-box{background:#fff8e6;border-left:3px solid var(--accent);padding:14px 18px;margin:16px 0;font-size:12.5px;color:#6b5a1e;border-radius:0 4px 4px 0}
+.action-card{background:var(--gray);border-radius:10px;border:1px solid var(--border);padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden}
+.action-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent)}
+.action-title{font-size:16px;font-weight:900;color:var(--navy);margin-bottom:10px}
+.action-body{font-size:13px;line-height:1.9;color:var(--text)}
+.implication-box{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:#fff;border-radius:10px;padding:32px 36px;margin-bottom:20px}
+.implication-title{font-size:17px;font-weight:900;margin-bottom:16px;line-height:1.4}
+.implication-body{font-size:13px;color:rgba(255,255,255,.85);line-height:1.9}
+.source-box{background:var(--gray);border-left:4px solid var(--navy);padding:20px 24px;margin-top:32px;border-radius:0 4px 4px 0}
+.source-box h3{color:var(--navy);font-size:14px;font-weight:700;margin-bottom:12px}
+.source-box ul{padding-left:16px}.source-box a{color:var(--navy);font-size:13px}
+.footer-nav{background:var(--gray);padding:24px 56px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap}
+.footer-nav a{background:var(--navy);color:#fff;padding:8px 16px;border-radius:4px;text-decoration:none;font-size:12px}
+.footer-note{padding:16px 56px 32px;font-size:11px;color:var(--muted)}
+@media(max-width:600px){.thumb{height:240px;padding:0 24px 28px}.thumb-headline{font-size:20px}.thumb-icon{font-size:24px}.header{padding:32px 24px 28px}.header h1{font-size:22px}.content{padding:32px 24px}.data-grid{grid-template-columns:repeat(2,1fr)}.footer-nav{padding:20px 24px}}
+</style></head>
+<body><div class="page">
+<div class="nav"><a href="https://don-hr.github.io/hr-insights/">← HR Insights トップに戻る</a></div>
+
+<div class="thumb"><div class="thumb-deco"></div><div class="thumb-inner">
+<span class="thumb-icon">🏢</span>
+<div class="thumb-cat">組織開発</div>
+<div class="thumb-headline">人事は「部長」から「医者」へ。組織診断能力の必須化</div>
+<div class="thumb-summary">労務管理から経営課題解決パートナーへ。CHRO機能の強化で人事の役割が急速に再定義されている。</div>
+<div class="thumb-brand">HR INSIGHTS ／ 人事・HRインテリジェンス</div>
+</div></div>
+
+<div class="header">
+<div class="header-label">HR INSIGHTS ｜ 組織開発</div>
+<h1>人事部が「治療家」へ。組織診断能力が経営課題解決の鍵</h1>
+<h2>人事部が単なる労務管理・採用機能から、組織の健全性診断と組織文化醸成を担う「治療家」としての役割へシフト。CHRO機能の強化が組織開発の専門性を急速に高めている。</h2>
+<div class="header-meta"><span>📅 2026年06月20日</span><span>✍️ HR Insights編集部</span><span>📖 約8分で読めます</span></div>
+</div>
+
+<div class="content">
+<div class="exec-summary">
+<div class="exec-label">EXECUTIVE SUMMARY</div>
+<p>人事部が単なる人事労務機能から組織の診断・治療を担う「治療家」としての役割にシフトしている。組織心理の理解と診断能力を持つCHRO機能の必要性が急速に高まり、経営課題解決パートナーとしての専門性が人事部の競争優位性を左右する時代へ入りつつある。既存人事部門の機能再編と組織診断スキルの強化が急務である。</p>
+</div>
+
+<div class="section">
+<div class="section-num">SECTION 01</div>
+<div class="section-title">背景：人事部の役割が歴史的転換点を迎えている</div>
+<p>日本のHR領域は大きな転換期を迎えている。従来、人事部は採用・配置・給与管理といった基本的な人事労務機能に特化し、経営層からは「必要な支援部門」と位置付けられることが多かった。しかし、経営環境の急速な変化、組織の多様化、ジェネレーション格差の拡大、心理的安全性への関心の高まりなどを背景に、人事部に求められる役割が根本的に変わり始めている。</p>
+<p>特に、人事コンサルタント・組織開発の専門家である三城雄児氏が指摘する「人事は治療家である」という概念は、この役割転換を象徴している。つまり、人事部が組織という「患者」の状態を診断し、その診断に基づいて適切な「処方箋」を提案し、組織変革をリードする存在として機能することが求められる時代に突入したということだ。</p>
+<p>この転換は単なるコンセプトの変化ではなく、人事部組織の再構築、求められるコンピテンシーの大幅な見直し、HR Tech の活用、さらには外部専門家との連携のあり方まで含む包括的な改革を意味している。</p>
+</div>
+
+<div class="section">
+<div class="section-num">SECTION 02</div>
+<div class="section-title">課題：既存人事機能と新しい期待値のギャップ</div>
+<p>多くの企業の人事部は、現在、大きなギャップに直面している。一方で経営層は人事部に対して「組織開発」「人材戦略」「経営課題解決」といった高度な専門性を求め始めており、他方で既存の人事部門は依然として採用管理システム、給与計算、勤務管理といった執行業務に大部分のリソースを割いているという現状である。</p>
+<div class="note-box">💡 実際のデータ：多くの企業の人事部では、戦略的HR機能に従事する人員が全体の20～30%程度であり、残りは労務・給与・採用などの執行機能に従事している傾向がある。このバランスは組織規模や業種によって異なるが、組織開発・人材育成という戦略機能の充実を求める経営層の期待と、現場のリアリティは大きく乖離している。</div>
+<p>さらに、組織診断を行うために必要な「心理学的素養」「組織行動論の理解」「データ分析能力」「コーチング・ファシリテーション技能」といったスキルセットを備えた人事人材が圧倒的に不足しているという課題もある。大学のHR教育プログラムの発展が遅れていることもあり、企業内でこうした能力開発をしようにも、体系的な研修プログラムや外部リソースの活用が限定的な状況が続いている。</p>
+</div>
+
+<div class="section">
+<div class="section-num">SECTION 03</div>
+<div class="section-title">考察：なぜ今、人事に「診断能力」が求められるのか</div>
+<p>組織開発の専門性が人事部に急速に求められるようになった背景には、経営環境の激変と組織課題の複雑化がある。DX推進によるジョブ型人事への転換、ジェネレーション多様化による価値観の分散、テレワークの定着に伴う組織文化の希薄化、管理職層の多忙化に伴うエンゲージメント低下など、従来のマニュアル的な人事対応では対応できない複雑な課題が増えている。</p>
+<p>こうした課題に対応するには、単なる「ルール運用」ではなく、組織の現状を正確に把握し、その根本原因を分析し、その企業固有の課題に対する処方箋を設計できる能力が必須となる。これが「治療家としての人事」というコンセプトの本質である。</p>
+<div class="implication-box">
+<div class="implication-title">▶ CHROの真の価値：経営層の意思決定を支える組織診断</div>
+<div class="implication-body">Chief Human Resources Officer（CHRO）の役割が単なる「人事トップ」から「経営層の経営判断を支える組織診断専門家」へシフトしている。経営戦略実行に必要な「組織の現状診断」「必要な組織設計」「人材配置戦略」「組織文化醸成」の各領域で、経営層に対して高度な分析と提案ができる能力が求められる。これが機能している企業は、組織変革の成功確度が格段に高くなる傾向にある。</div>
+</div>
+<p>また、データ分析とヒューマンタッチの融合も重要な要素である。エンゲージメントサーベイ、退職理由分析、組織ネットワーク分析などのデータに基づいて、組織の問題箇所を特定し、その後の対話的なプロセスを通じて根本原因を掘り下げることで、初めて有効な組織開発施策が設計できるようになる。</p>
+</div>
+
+<div class="section">
+<div class="section-num">SECTION 04</div>
+<div class="section-title">人事・経営層が取るべきアクション</div>
+<div class="action-card">
+<div class="action-title">✅ アクション①：人事部門の機能分析と役割再構築</div>
+<div class="action-body">現在の人事部員が「戦略機能」「執行機能」「支援機能」のいずれに従事しているか、詳細な時間配分調査を実施する。その上で、経営課題解決に必要な戦略的HR機能（組織開発・人材育成・採用戦略）に従事するメンバーの比率目標を設定。執行機能は可能な限りシェアードサービスやRPA化を推進し、戦略機能へのリソースシフトを3〜6ヶ月内に実装する。</div>
+</div>
+<div class="action-card">
+<div class="action-title">✅ アクション②：CHRO候補人材の育成とコンピテンシー再定義</div>
+<div class="action-body">現在のCHRO候補者（部門長クラス以上）のコンピテンシーアセスメントを実施。特に「組織診断能力」「データ分析・解釈能力」「経営課題への理解」「ステークホルダーマネジメント」の4領域を強化対象として設定。組織心理学講座、データ分析研修、経営戦略研修への参加、外部コンサルタントとのメンタリング等の育成プログラムを今月中に立案し、12ヶ月内での実装を目指す。</div>
+</div>
+<div class="action-card">
+<div class="action-title">✅ アクション③：組織診断スキル基盤の構築と外部リソース活用</div>
+<div class="action-body">組織サーベイツール（エンゲージメント、心理的安全性、組織文化など）の導入計画を策定。年1回程度の定期的な組織診断を実施する体制を構築。社内で実施困難な高度な分析や組織開発施策の設計については、外部の組織開発コンサルタント、組織心理学の専門家との連携関係を構築。人事部内での診断スキル向上を目指し、簡易的な組織診断研修を社内人事チーム向けに3ヶ月以内に実施する。</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-num">SECTION 05</div>
+<div class="section-title">まとめ：人事部が組織の「医者」になる時代へ</div>
+<p>人事部の役割転換は、単なるトレンドではなく、経営環境の変化に対応するための必須条件となりつつある。組織の問題を「ルール遵守」で対応する時代は終わり、組織という複雑なシステムの状態を正確に把握し、その問題の本質を診断し、適切な介入を実施できる「治療家」としての専門性が人事部には求められている。</p>
+<p>このシフトに成功する企業は、①既存の人事機能を戦略機能と執行機能に明確に分離し、②CHRO層の専門性を大幅に強化し、③組織診断とデータ分析の基盤を整備した企業だろう。既に大企業の先進事例では、このような人事機能再編を進めつつあり、これが組織の課題解決速度と組織パフォーマンスの向上に直結していることが報告されている。</p>
+<p>組織開発への投資と人事部の機能強化は、短期的なコスト項目ではなく、経営戦略実行の成否を左右する投資である。今月から人事部の機能分析と役割再構築を開始し、12ヶ月以内に新しい人事部のありかたへの移行を完了させることを強く推奨する。</p>
+</div>
+
+<div class="source-box">
+<h3>参考情報</h3>
+<ul><li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQTXhaS0dxWXFQZFRtUFU3SVJxc0pEQy15cHZTMnhvMUNkLU1xZlplS2hmT3lIUmxoTlNaZFpXb1M1UHhncjdMczNnR3ItREJ0ZHM5MDdNMkIzZG9CM05zRFRGY01wZncyLXJrZ0hybmUxU19scC1pWDdLaVY4OXNHTWszdC1QWlBX?oc=5" target="_blank">Yahoo!ニュース「人事部の役割転換に関する記事」</a></li></ul>
+</div>
+</div>
+
+<div class="footer-nav">
+<a href="https://don-hr.github.io/hr-insights/?cat=採用市場">採用市場</a>
+<a href="https://don-hr.github.io/hr-insights/?cat=人的資本経営">人的資本経営</a>
+<a href="https://don-hr.github.io/hr-insights/?cat=組織開発">組織開発</a>
+<a href="https://don-hr.github.io/hr-insights/?cat=HR Tech・AI">HR Tech・AI</a>
+<a href="https://don-hr.github.io/hr-insights/?cat=法改正・制度">法改正・制度</a>
+</div>
+<div class="footer-note">※本記事はAIが自動生成しています。最新情報は必ず公式サイトをご確認ください。</div>
+</div></body></html>
